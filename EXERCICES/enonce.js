@@ -92,9 +92,15 @@ const RECETTES = {
 };
 
 // Fonction pour déterminer la recette en fonction des ingrédients disponibles
-function determinerRecette(ingredientsDisponibles) {}
+function determinerRecette(ingredientsDisponibles) {
+  for (ingredient in RECETTES) {
+    if (RECETTES[ingredient].toString() === ingredientsDisponibles.toString()) {
+      return ingredient;
+    }
+  }
+}
 
 // Exemple d'utilisation
-// const ingredients = ["pâtes", "lardons", "œufs", "parmesan"];
-// const recette = determinerRecette(ingredients);
-// console.log("Recette recommandée :", recette); // Recette recommandée : Pâtes à la carbonara
+const ingredients = ["pâtes", "lardons", "œufs", "parmesan"];
+const recette = determinerRecette(ingredients);
+console.log("Recette recommandée :", recette); // Recette recommandée : Pâtes à la carbonara
