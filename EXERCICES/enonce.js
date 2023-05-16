@@ -81,9 +81,30 @@ const compterE = (mot) => {
 compterE("électroencéphalographie"); // 3
 compterE("abstraction"); // 0
 
-/*====================================================================
-                        EXERCICE FACULTATTIF
-====================================================================*/
+// /*====================================================================
+//                         EXERCICE FACULTATTIF
+// ====================================================================*/
+// // Définition des recettes et des ingrédients nécessaires
+// const RECETTES = {
+//   "Pâtes à la carbonara": ["pâtes", "lardons", "œufs", "parmesan"],
+//   "Salade César": ["laitue", "poulet", "croutons", "parmesan", "sauce César"],
+//   "Omelette aux légumes": ["œufs", "légumes", "fromage"],
+// };
+
+// // Fonction pour déterminer la recette en fonction des ingrédients disponibles
+// function determinerRecette(ingredientsDisponibles) {
+//   for (ingredient in RECETTES) {
+//     if (RECETTES[ingredient].toString() === ingredientsDisponibles.toString()) {
+//       return ingredient;
+//     }
+//   }
+// }
+
+// // Exemple d'utilisation
+// const ingredients = ["pâtes", "lardons", "œufs", "parmesan"];
+// const recette = determinerRecette(ingredients);
+// console.log("Recette recommandée :", recette); // Recette recommandée : Pâtes à la carbonara
+
 // Définition des recettes et des ingrédients nécessaires
 const RECETTES = {
   "Pâtes à la carbonara": ["pâtes", "lardons", "œufs", "parmesan"],
@@ -94,13 +115,16 @@ const RECETTES = {
 // Fonction pour déterminer la recette en fonction des ingrédients disponibles
 function determinerRecette(ingredientsDisponibles) {
   for (ingredient in RECETTES) {
-    if (RECETTES[ingredient].toString() === ingredientsDisponibles.toString()) {
-      return ingredient;
-    }
+    let missingIngredients = RECETTES[ingredient].filter(
+      (ing) => !ingredientsDisponibles.includes(ing)
+    );
+    console.log(
+      `Ingrediants manquants pour ${ingredient}:  ${missingIngredients.toString()}`
+    );
   }
 }
 
 // Exemple d'utilisation
-const ingredients = ["pâtes", "lardons", "œufs", "parmesan"];
-const recette = determinerRecette(ingredients);
-console.log("Recette recommandée :", recette); // Recette recommandée : Pâtes à la carbonara
+const ingredients = ["pâtes", "lardons", "œufs"];
+determinerRecette(ingredients);
+// console.log("Recette recommandée :", recette); // Recette recommandée : Pâtes à la carbonara
